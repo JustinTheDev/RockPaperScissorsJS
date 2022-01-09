@@ -1,4 +1,6 @@
 let computerDescision = ["rock","paper","scissors"];
+let playerSelection;
+let comSelection;
 function computerPlay()
 {
     return computerDescision[Math.floor(Math.random()*computerDescision.length)];
@@ -51,7 +53,14 @@ function playRound(computerSelection, userSelection)
             break;
     }
 }
-let comSelection = computerPlay();
-let playerSelection = window.prompt("Select Rock, Paper or Scissors: ").toLowerCase();
+function game()
+{
+    for(let i = 0; i<5; i++)
+    {
+        comSelection = computerPlay();
+        playerSelection = window.prompt("Select Rock, Paper or Scissors: ").toLowerCase();
+        console.log(playRound(comSelection, playerSelection));
+    }
+}
 
-console.log(playRound(comSelection, playerSelection));
+game();
