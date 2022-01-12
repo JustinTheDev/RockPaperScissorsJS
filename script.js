@@ -1,12 +1,15 @@
+
 let computerDescision = ["rock","paper","scissors"];
 let playerSelection;
 let comSelection;
+const displayDiv = document.querySelector('#result');
 function computerPlay()
 {
     return computerDescision[Math.floor(Math.random()*computerDescision.length)];
 }
 function playRound(computerSelection, userSelection)
 {
+    displayDiv.innerText  = "Game Started";
     switch(computerSelection)
     {
         case "rock":
@@ -55,12 +58,24 @@ function playRound(computerSelection, userSelection)
 }
 function game()
 {
-    for(let i = 0; i<5; i++)
-    {
-        comSelection = computerPlay();
-        playerSelection = window.prompt("Select Rock, Paper or Scissors: ").toLowerCase();
-        console.log(playRound(comSelection, playerSelection));
-    }
+    console.log("Playing the game");
+
+    //for(let i = 0; i<5; i++)
+    //{
+    //comSelection = computerPlay();
+    //playerSelection = window.prompt("Select Rock, Paper or Scissors: ").toLowerCase();
+    //console.log(playRound(comSelection, playerSelection));
+    //}
 }
 
-game();
+//game();
+
+const buttons = document.querySelectorAll('button');
+console.log(buttons);
+
+buttons.forEach((button) => {
+    button.addEventListener('click', function(){
+        comSelection=computerPlay();
+        displayDiv.innerText = (playRound(comSelection, button.id));
+    });
+});
